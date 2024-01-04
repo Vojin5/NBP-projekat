@@ -1,4 +1,6 @@
 
+let prevFile = null;
+
 let element = document.querySelector("trix-editor");
 console.log(JSON.stringify(element.editor));
 
@@ -15,3 +17,10 @@ loadbtn.addEventListener("click", () => {
     console.log(JSON.parse(localStorage["editor-state"]));
 });
 
+element.addEventListener("trix-file-accept", (event) => {
+    
+});
+
+element.addEventListener("trix-attachment-add",(event) => {
+    
+});

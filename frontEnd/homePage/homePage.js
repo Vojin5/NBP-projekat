@@ -2,12 +2,22 @@
 //labels
 let userNameLabel = document.getElementById("userNameLabel");
 //buttons
-let createNewDocumentButton = document.getElementById("createNewDocument");
+let createNewDocumentButton = document.getElementById("createNewDocument"); // dugme za otvaranje dela za kreiranje (toggle)
 let modifyDocumentsButton = document.getElementById("modifyDocumentsButton");
+let addDocumentUsername = document.getElementById("documentAddUsername");
+let createDocumentButton = document.getElementById("createDocumentButton"); // dugme za kreiranje
 //containers
 let createNewDocumentContainer = document.querySelector(".createDocuments-container");
 let modifyDocumentsContainer = document.querySelector(".documents-container");
+let documentUsernamesContainer = document.querySelector(".document-usernames-container");
+//inputs
+let documentNameInput = document.getElementById("documentName");
+let documentUsernameInput = document.getElementById("documentUserName");
 
+//Usernames array
+let usernamesArray = [];
+
+//Listener da prebaci na scenu za dodavanje novog dokumenta
 createNewDocumentButton.addEventListener("click",() => {
     modifyDocumentsContainer.classList.remove("enabled");
     modifyDocumentsContainer.classList.add("disabled");
@@ -16,6 +26,7 @@ createNewDocumentButton.addEventListener("click",() => {
     createNewDocumentContainer.classList.add("enabled");
 });
 
+//Listener da prebaci na scenu postojecih dokumenata
 modifyDocumentsButton.addEventListener("click",() => {
     modifyDocumentsContainer.classList.remove("disabled");
     modifyDocumentsContainer.classList.add("enabled");
@@ -24,8 +35,35 @@ modifyDocumentsButton.addEventListener("click",() => {
     createNewDocumentContainer.classList.add("disabled");
 });
 
+//Dodavanje novog username-a u listu username-a
+addDocumentUsername.addEventListener("click",() => {
+    if(documentUsernameInput.value == "")
+    {
+        alert("Enter username to add to document access");
+        return;
+    }
+    if(usernamesArray.includes(documentUsernameInput.value))
+    {
+        alert("Username already added");
+        return;
+    }
+    let usernameElement = document.createElement("div");
+    usernameElement.className = "username-card";
+    usernameElement.innerHTML = documentUsernameInput.value;
+    usernameElement.addEventListener("click",() => {
+        let index = usernamesArray.indexOf(usernameElement.innerHTML);
+        if(index != -1)
+        {
+            usernamesArray.splice(index,1);
+        }
+        documentUsernamesContainer.removeChild(usernameElement);
+    });
+    usernamesArray.unshift(documentUsernameInput.value);
+    documentUsernamesContainer.insertBefore(usernameElement,documentUsernamesContainer.firstChild);
+});
 
-function injectCard(name,isOwner,isFavorite,people)
+//Za zadate parametre kreira i vraca karticu za dokument
+function createCard(name,isOwner,isFavorite,people)
 {
     let cardContainer = document.createElement("div"); // Card container
     cardContainer.className = "document-card";
@@ -87,4 +125,4 @@ function injectCard(name,isOwner,isFavorite,people)
 
 // TODO: Fetch za dokumente datog korisnika
 modifyDocumentsContainer.appendChild(
-    injectCard("Test doc",true,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"]));
+    createCard("Test doc",true,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"]));

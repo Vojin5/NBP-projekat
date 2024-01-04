@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./homePage.css">
     <link rel="stylesheet" href="./documents-container.css">
+    <link rel="stylesheet" href="./create-documents.css">
     <title>Home</title>
 </head>
 <body>
@@ -21,7 +22,23 @@
 
     <!--Create Document-->
     <div class="createDocuments-container disabled">
-        <label class="label">Create</label>
+        <label class="label"> Create Document </label>
+        <div class="input-container ic1">
+            <input id="documentName" class="input" type="text" placeholder=" " />
+            <div class="cut2"></div>
+            <label for="documentName" class="placeholder">Document name</label>
+        </div>
+        <div class="input-container ic1">
+            <input id="documentUserName" class="input" type="text" placeholder=" " />
+            <div class="cut3"></div>
+            <label for="documentUserName" class="placeholder">Enter a username to allow access</label>
+        </div>
+        <button class="button" id="documentAddUsername" >Add username</button>
+        <div class="document-usernames-container">
+        </div>
+        <button class="button" id="createDocumentButton" >Create</button>
+
+        
     </div>
     <script type="module" src="./homePage.js"></script>
 </body>
