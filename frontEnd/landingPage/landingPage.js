@@ -50,6 +50,7 @@ sumbitButton.addEventListener("click", () => {
         return;
     } 
     // TODO: implementiraj logiku za registraciju i ako je registracija uspesna moze da se predje na homePage/loginPage
+    // TODO: provera postojeci username
 });
 
 loginButton.addEventListener("click",() => {

@@ -62,6 +62,16 @@ addDocumentUsername.addEventListener("click",() => {
     documentUsernamesContainer.insertBefore(usernameElement,documentUsernamesContainer.firstChild);
 });
 
+createDocumentButton.addEventListener("click",() => {
+    if(documentNameInput.value == "")
+    {
+        alert("Enter Document name");
+        return;
+    }
+    // TODO: dodaj sebe u listu usernameArray
+    // TODO: fetch za create
+});
+
 //Za zadate parametre kreira i vraca karticu za dokument
 function createCard(name,isOwner,isFavorite,people)
 {
@@ -126,3 +136,5 @@ function createCard(name,isOwner,isFavorite,people)
 // TODO: Fetch za dokumente datog korisnika
 modifyDocumentsContainer.appendChild(
     createCard("Test doc",true,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"]));
+    modifyDocumentsContainer.appendChild(
+        createCard("Test doc",false,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"])); 
