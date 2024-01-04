@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./homePage.css">
+    <link rel="stylesheet" href="./documents-container.css">
+    <title>Home</title>
 </head>
 <body>
-    
+    <!--Toolbar-->
+    <div class="toolbar">
+        <button class="button" id="modifyDocumentsButton">Modify Documents</button>
+        <label class="label" id="userNameLabel">Your Name</label>
+        <button class="button" id="createNewDocument">Create new Document</button>
+    </div>
+
+    <!--Documents-->
+    <div class="documents-container disabled">
+    </div>
+
+    <!--Create Document-->
+    <div class="createDocuments-container disabled">
+        <label class="label">Create</label>
+    </div>
+    <script type="module" src="./homePage.js"></script>
 </body>
 </html>
