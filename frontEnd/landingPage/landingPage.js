@@ -20,6 +20,7 @@ fileInput.addEventListener("change",() => {
         avatarButton.innerHTML = "Avatar Added";
         avatarButton.style.backgroundColor = "green";
         imageFile = reader.result.toString().replace(/^data:(.*,)?/, '');
+        console.log(imageFile);
     }
 
     if(file)
@@ -52,5 +53,5 @@ sumbitButton.addEventListener("click", () => {
 });
 
 loginButton.addEventListener("click",() => {
-    window.location.href = "./htmlTest.html";
+    window.location.href = "../loginPage/loginPage.html";
 });
