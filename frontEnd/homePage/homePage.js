@@ -107,9 +107,9 @@ function createCard(name,isOwner,isFavorite,people)
     let peopleContainer = document.createElement("div");
     peopleContainer.className = "card-people";
     people.forEach(element => {
-        let newImg = document.createElement("img");
-        newImg.src = element;
-        newImg.className = "card-img";
+        let newImg = document.createElement("label");
+        newImg.innerHTML = element;
+        newImg.className = "username-card";
         peopleContainer.appendChild(newImg);
     });
     cardContainer.appendChild(peopleContainer);
@@ -135,6 +135,5 @@ function createCard(name,isOwner,isFavorite,people)
 
 // TODO: Fetch za dokumente datog korisnika
 modifyDocumentsContainer.appendChild(
-    createCard("Test doc",true,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"]));
-    modifyDocumentsContainer.appendChild(
-        createCard("Test doc",false,true,["../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png","../resources/owner.png"])); 
+    createCard("Test doc",true,true,["vojin","matija","miki","veki","veljko","ZLJSSS"]));
+    
