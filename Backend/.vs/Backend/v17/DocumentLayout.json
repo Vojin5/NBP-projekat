@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|c:\\users\\roko\\desktop\\nbp projekat\\nbp-projekat\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|c:\\users\\roko\\desktop\\nbp projekat\\nbp-projekat\\backend\\backend\\signalr\\editorhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|solutionrelative:backend\\signalr\\editorhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|c:\\users\\roko\\desktop\\nbp projekat\\nbp-projekat\\backend\\backend\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\Program.cs",
+              "RelativeToolTip": "Backend\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-06T17:27:15.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DocumentController.cs",
+              "DocumentMoniker": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\Controllers\\DocumentController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\DocumentController.cs",
+              "ToolTip": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\Controllers\\DocumentController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\DocumentController.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAuwFgAAABlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-06T17:19:57.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditorHub.cs",
+              "DocumentMoniker": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\SignalR\\EditorHub.cs",
+              "RelativeDocumentMoniker": "Backend\\SignalR\\EditorHub.cs",
+              "ToolTip": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Backend\\SignalR\\EditorHub.cs",
+              "RelativeToolTip": "Backend\\SignalR\\EditorHub.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-06T16:22:49.333Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

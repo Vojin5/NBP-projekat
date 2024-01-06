@@ -1,3 +1,5 @@
+using Backend.SignalR;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +14,10 @@ builder.Services.AddCors(builder =>
     {
         policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
     });
+});
+builder.Services.AddSignalR(options =>
+{
+    options.EnableDetailedErrors = true;
 });
 
 var app = builder.Build();
@@ -28,5 +34,7 @@ app.UseCors("CORS");
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<EditorHub>("/editor-hub");
 
 app.Run();
