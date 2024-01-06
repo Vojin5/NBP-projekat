@@ -1,4 +1,4 @@
-
+import { serverUrl,baseUrl } from "../config.js";
 //Buttons
 let sumbitButton = document.getElementById("submitRegister");
 let fileInput = document.getElementById("file-input");
@@ -20,7 +20,6 @@ fileInput.addEventListener("change",() => {
         avatarButton.innerHTML = "Avatar Added";
         avatarButton.style.backgroundColor = "green";
         imageFile = reader.result.toString().replace(/^data:(.*,)?/, '');
-        console.log(imageFile);
     }
 
     if(file)
@@ -33,7 +32,7 @@ fileInput.addEventListener("change",() => {
 
 });
 
-sumbitButton.addEventListener("click", () => {
+sumbitButton.addEventListener("click", async () => {
     if(usernameInput.value == "")
     {
         alert("Enter Username");
@@ -48,9 +47,33 @@ sumbitButton.addEventListener("click", () => {
     {
         alert("Enter email properly");
         return;
+    }
+    if(imageFile == null)
+    {
+        alert("Add avatar");
+        return;
     } 
-    // TODO: implementiraj logiku za registraciju i ako je registracija uspesna moze da se predje na homePage/loginPage
-    // TODO: provera postojeci username
+    console.log(JSON.stringify({username:usernameInput.value,
+        password:passwordInput.value,
+        email:emailInput.value,
+        avatar:imageFile}));
+
+    const userRegister = await fetch(serverUrl + "/User/register", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({username:usernameInput.value,
+            password:passwordInput.value,
+            email:emailInput.value,
+            avatar:imageFile})
+    });
+    if (!userRegister.ok)
+    {
+        alert("Bad username or password");
+        return;
+    } 
+    window.location.href = baseUrl + "/frontEnd/loginPage/loginPage.html";
 });
 
 loginButton.addEventListener("click",() => {

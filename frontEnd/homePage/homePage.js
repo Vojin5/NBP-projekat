@@ -1,6 +1,10 @@
-
+import { baseUrl,serverUrl } from "../config.js";
+// TODO: DELETE dugme
 //labels
 let userNameLabel = document.getElementById("userNameLabel");
+userNameLabel.textContent = localStorage["username"];
+//Documents
+let documents = null;
 //buttons
 let createNewDocumentButton = document.getElementById("createNewDocument"); // dugme za otvaranje dela za kreiranje (toggle)
 let modifyDocumentsButton = document.getElementById("modifyDocumentsButton");
@@ -62,15 +66,22 @@ addDocumentUsername.addEventListener("click",() => {
     documentUsernamesContainer.insertBefore(usernameElement,documentUsernamesContainer.firstChild);
 });
 
-createDocumentButton.addEventListener("click",() => {
+createDocumentButton.addEventListener("click", async() => {
     if(documentNameInput.value == "")
     {
         alert("Enter Document name");
         return;
     }
-    // TODO: dodaj sebe u listu usernameArray
-    // TODO: fetch za create
+
+    const documentRequest = await fetch(serverUrl + `/Document/create/${localStorage["username"]}/${documentNameInput.value}`,{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(usernamesArray)
+    });
 });
+
 
 //Za zadate parametre kreira i vraca karticu za dokument
 function createCard(name,isOwner,isFavorite,people)
@@ -133,7 +144,15 @@ function createCard(name,isOwner,isFavorite,people)
     return cardContainer;
 }
 
-// TODO: Fetch za dokumente datog korisnika
-modifyDocumentsContainer.appendChild(
-    createCard("Test doc",true,true,["vojin","matija","miki","veki","veljko","ZLJSSS"]));
+window.addEventListener("DOMContentLoaded", async() => {
+    const documentsRequest = await fetch (serverUrl + "/Document/my-documents/" + localStorage["username"]);
+    documents = await documentsRequest.json();
+    documents.forEach(doc => {
+        modifyDocumentsContainer.appendChild(createCard(doc["documentName"],doc["owner"],doc["favourite"],doc["people"]));
+    });
+});
+
+
+
+
     

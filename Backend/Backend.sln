@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migracije", "Migracije\Migracije.csproj", "{7AF1BC51-2AE2-4D05-9AB0-1CED2453DD92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A679BD1-547C-4159-AAFE-4BA5E8BCC38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF1BC51-2AE2-4D05-9AB0-1CED2453DD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF1BC51-2AE2-4D05-9AB0-1CED2453DD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF1BC51-2AE2-4D05-9AB0-1CED2453DD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF1BC51-2AE2-4D05-9AB0-1CED2453DD92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {501E775C-77C5-474B-9B78-C3C4BEBFD1A2}
+	EndGlobalSection
+EndGlobal
