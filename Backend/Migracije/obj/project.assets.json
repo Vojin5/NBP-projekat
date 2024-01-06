@@ -3833,19 +3833,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Roko\\.nuget\\packages\\": {}
+    "C:\\Users\\Vojin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Migracije\\Migracije.csproj",
+      "projectUniqueName": "C:\\Users\\Vojin\\Desktop\\NBP\\Backend\\Migracije\\Migracije.csproj",
       "projectName": "Migracije",
-      "projectPath": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Migracije\\Migracije.csproj",
-      "packagesPath": "C:\\Users\\Roko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Roko\\Desktop\\NBP Projekat\\NBP-projekat\\Backend\\Migracije\\obj\\",
+      "projectPath": "C:\\Users\\Vojin\\Desktop\\NBP\\Backend\\Migracije\\Migracije.csproj",
+      "packagesPath": "C:\\Users\\Vojin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vojin\\Desktop\\NBP\\Backend\\Migracije\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Roko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Vojin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3853,7 +3858,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3866,11 +3870,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {

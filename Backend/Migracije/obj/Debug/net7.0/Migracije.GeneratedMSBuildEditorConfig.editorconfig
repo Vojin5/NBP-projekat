@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Migracije
-build_property.ProjectDir = C:\Users\Roko\Desktop\NBP Projekat\NBP-projekat\Backend\Migracije\
+build_property.ProjectDir = C:\Users\Vojin\Desktop\NBP\Backend\Migracije\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

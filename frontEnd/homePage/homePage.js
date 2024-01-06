@@ -1,5 +1,9 @@
 import { baseUrl,serverUrl } from "../config.js";
 // TODO: DELETE dugme
+// TODO: Save Dugme
+// TODO: Chat
+// TODO: ko je sve na doc redissss
+// TODO: version history??
 //labels
 let userNameLabel = document.getElementById("userNameLabel");
 userNameLabel.textContent = localStorage["username"];
