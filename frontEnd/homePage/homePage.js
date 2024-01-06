@@ -84,7 +84,7 @@ createDocumentButton.addEventListener("click", async() => {
 
 
 //Za zadate parametre kreira i vraca karticu za dokument
-function createCard(name,isOwner,isFavorite,people)
+function createCard(i,name,isOwner,isFavorite,people)
 {
     let cardContainer = document.createElement("div"); // Card container
     cardContainer.className = "document-card";
@@ -131,6 +131,10 @@ function createCard(name,isOwner,isFavorite,people)
     let editButton = document.createElement("button");
     editButton.classList.add("card-button");
     editButton.innerHTML = "Edit";
+    editButton.addEventListener("click",() => {
+        localStorage["currentDocument"] = documents[i]["documentId"];
+        window.location.href = baseUrl +"/frontEnd/editorPage/editorPage.html";
+    });
     buttonsContainer.appendChild(editButton);
 
     if(isOwner)
@@ -147,8 +151,9 @@ function createCard(name,isOwner,isFavorite,people)
 window.addEventListener("DOMContentLoaded", async() => {
     const documentsRequest = await fetch (serverUrl + "/Document/my-documents/" + localStorage["username"]);
     documents = await documentsRequest.json();
-    documents.forEach(doc => {
-        modifyDocumentsContainer.appendChild(createCard(doc["documentName"],doc["owner"],doc["favourite"],doc["people"]));
+    documents.forEach((doc,i) => {
+        const card = createCard(i,doc["documentName"],doc["owner"],doc["favourite"],doc["people"]);
+        modifyDocumentsContainer.appendChild(card);
     });
 });
 

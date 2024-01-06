@@ -1,11 +1,14 @@
+import { baseUrl,serverUrl } from "../config.js";
+let quill;
+let oldContent = [null,null];
+let newContent = [];
+let currentOld = null;
+let currentNew = null;
 
+let documentID = localStorage["currentDocument"];
 
-let editor;
-let oldState = [null,null];
-let newDelta = [];
-let latestOld = null;
-let latestNew = null;
-editor = new Quill("#editor", 
+let saveButton = document.getElementById("save");
+quill = new Quill("#editor", 
     {
         theme: 'snow',
         modules: {
@@ -34,25 +37,25 @@ editor = new Quill("#editor",
         }
     );
 
-    editor.on('text-change', function(delta, oldDelta, source) {
-        console.log(oldDelta);
-        console.log(delta);
-        latestOld = oldDelta;
-        latestNew = delta;
-        newDelta.push(delta);
-      });
-
-
-
-
-const save = document.body.querySelector(".save");
-save.addEventListener("click", () => {
-    oldState[0] = latestOld;
-    oldState[1] = latestNew;
-    newDelta = [];
+    quill.on('text-change', function(delta, oldDelta, source) {
+      oldContent[0] = oldDelta;
+      oldContent[1] = delta;
+      newContent.push(delta);
     });
-const restore = document.body.querySelector(".restore");
-restore.addEventListener("click", () => {
-    editor.setContents(oldState[0]);
-    editor.updateContents(oldState[1]);
-});
+
+    saveButton.addEventListener("click",async() => {
+      const result = await fetch(serverUrl + `/Document/add-content/${documentID}`,
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"},
+        body:JSON.stringify(oldContent)
+      })
+    });
+
+
+
+
+let documentObj = await (await fetch(serverUrl+`/Document/get-content/${documentID}`)).json();
+quill.setContents(documentObj[0]);
+quill.updateContents(documentObj[1]);

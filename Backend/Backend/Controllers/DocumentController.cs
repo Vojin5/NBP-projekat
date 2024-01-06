@@ -1,5 +1,6 @@
 ﻿using Cassandra;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Backend.Controllers;
 [ApiController]
@@ -72,5 +73,22 @@ public class DocumentController : ControllerBase
         }));
     }
 
-    
+    [HttpPost("add-content/{id}")]
+    public async Task<IActionResult> addContent([FromRoute]string id, [FromBody]JsonDocument content)
+    {
+        var str = content.RootElement.ToString();
+        var simpleStatement = new SimpleStatement($"UPDATE documents_by_id\n\rSET content = '{str}'\n\rWHERE id = {id};");
+        await CassandraDB.ExecuteAsync(simpleStatement);
+        return Ok();
+    }
+
+    [HttpGet("get-content/{id}")]
+    public async Task<IActionResult> getContent([FromRoute] string id)
+    {
+        var simpleStatement = new SimpleStatement($"SELECT content FROM documents_by_id WHERE id={id};");
+        var content = (await CassandraDB.ExecuteAsync(simpleStatement)).FirstOrDefault()!["content"];
+
+        return Ok(content);
+    }
+
 }
