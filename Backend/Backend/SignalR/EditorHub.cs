@@ -41,9 +41,13 @@ public class EditorHub : Hub
             var deltas = await RedisConnection.ListRangeAsync(user.DocumentId, 0, -1);
            
             var content = deltas.Select(x => x.ToString()).ToList();
-            
-            
-            await Clients.Client(user.ConnectionId).SendAsync("handleRedisDocumentChanges", content);
+            string contentString = "";
+            foreach (var e in content)
+            {
+                contentString += e.ToString();
+            }
+
+            await Clients.Client(user.ConnectionId).SendAsync("handleRedisDocumentChanges", contentString);
         }
     }
 
@@ -97,8 +101,28 @@ public class EditorHub : Hub
         if(document.Count == 0)
         {
             var RedisConnection = ConnectionMultiplexer.Connect("localhost").GetDatabase();
+            var contentData = await RedisConnection.ListRangeAsync(documentId, 0, -1);
+            var content = contentData.Select(x => x.ToString()).ToList();
+            string contentString = "";
+            foreach(var e in content)
+            {
+                contentString += e.ToString();
+            }
+            var CassandraConnection = Cluster.Builder().AddContactPoint("127.0.0.1").WithPort(9042).Build().Connect("nbp");
+            var ss = new SimpleStatement($"UPDATE documents_by_id SET content = '{contentString}' WHERE id = {documentId};");
+            await CassandraConnection.ExecuteAsync(ss);
             await RedisConnection.KeyDeleteAsync(documentId);
             await RedisConnection.KeyDeleteAsync(documentId + "-lock");
+        }
+        else
+        {
+            var RedisConnection = ConnectionMultiplexer.Connect("localhost").GetDatabase();
+            var userLock = (await RedisConnection.StringGetAsync(documentId + "-lock")).ToString();
+            if(userLock == user.Username)
+            {
+                await RedisConnection.KeyDeleteAsync(documentId + "-lock");
+                await Clients.Clients(_documents[user.DocumentId].Select(d => d.ConnectionId)).SendAsync("handleWriteRelease");
+            }
         }
         await base.OnDisconnectedAsync(exception);
     }

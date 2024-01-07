@@ -1,6 +1,7 @@
 ﻿using Backend.Models;
 using Cassandra;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 
 namespace Backend.Controllers;
 [ApiController]
@@ -30,6 +31,16 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> loginUser([FromBody] UserLogin user)
     {
+        var RedisConnection = ConnectionMultiplexer.Connect("localhost").GetDatabase();
+        var redisUsername = (await RedisConnection.StringGetAsync(user.Username));
+        if(redisUsername.HasValue)
+        {
+            if(redisUsername.ToString() == user.Password)
+            {
+                Console.WriteLine("Redis cached");
+                return Ok();
+            }
+        }
         var simpleStatement = new SimpleStatement($"SELECT * FROM users_by_username WHERE username='{user.Username}';");
         RowSet rows = await CassandraDB.ExecuteAsync(simpleStatement);
         var row = rows.FirstOrDefault();
@@ -39,6 +50,7 @@ public class UserController : ControllerBase
         }
         else
         {
+            await RedisConnection.StringSetAsync(user.Username, user.Password, TimeSpan.FromMinutes(10));
             return Ok();
         }
     }

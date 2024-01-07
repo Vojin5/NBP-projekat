@@ -1,8 +1,5 @@
 import { baseUrl,serverUrl } from "../config.js";
-// TODO: DELETE dugme
-// TODO: Save Dugme
 // TODO: Chat
-// TODO: ko je sve na doc redissss
 // TODO: version history??
 //labels
 let userNameLabel = document.getElementById("userNameLabel");
@@ -146,6 +143,11 @@ function createCard(i,name,isOwner,isFavorite,people)
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("card-button");
         deleteButton.innerHTML = "Delete";
+        deleteButton.addEventListener("click",async() => {
+            await fetch(serverUrl+"/Document/remove-document/"+documents[i]["documentId"],{
+                method:"DELETE"
+            });
+        });
         buttonsContainer.appendChild(deleteButton);
     }
     cardContainer.appendChild(buttonsContainer);

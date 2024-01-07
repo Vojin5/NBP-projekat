@@ -5,7 +5,6 @@ const localUsername = localStorage["username"];
 let writeLock = false;
 let documentID = localStorage["currentDocument"];
 
-let saveButton = document.getElementById("save");
 let writeButton = document.getElementById("lock");
 let releaseAccessButton = document.getElementById("unlock");
 releaseAccessButton.setAttribute("disabled","true");
@@ -42,19 +41,12 @@ quill.on('text-change', function(delta, oldDelta, source) {
     // oldContent[0] = oldDelta;
     // oldContent[1] = delta;
     // newContent.push(delta);
+    console.log(oldDelta);
+    console.log(delta);
     if(writeLock == false) return;
     connection.invoke("SendDocumentChanges",JSON.stringify(delta));
   });
 
-saveButton.addEventListener("click",async() => {
-  const result = await fetch(serverUrl + `/Document/add-content/${documentID}`,
-    {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"},
-      body:JSON.stringify(oldContent)
-    })
-  });
 
   writeButton.addEventListener("click",async () => {
     await connection.invoke("AcquireWriteLock");
@@ -68,9 +60,11 @@ saveButton.addEventListener("click",async() => {
 
 let connection = new signalR.HubConnectionBuilder().withUrl(serverUrl+"/editor-hub").build();
 connection.on("handleRedisDocumentChanges",(content) => {
-  console.log(content);
+  content = '[' + content.replace(/}{/g, '},{') + ']';
+  content = JSON.parse(content);
   content.forEach(element => {
-    quill.updateContents(JSON.parse(element));
+    console.log(element);
+    quill.updateContents(element);
   });
 });
 

@@ -20,6 +20,7 @@ public class DocumentController : ControllerBase
         {
             list += $"'{u}'";
         });
+        list += "'"+owner+"'";
         list+= "]";
         var uuid = System.Guid.NewGuid().ToString();
         batch+= ($"INSERT INTO document_card_by_username" +
@@ -89,6 +90,24 @@ public class DocumentController : ControllerBase
         var content = (await CassandraDB.ExecuteAsync(simpleStatement)).FirstOrDefault()!["content"];
 
         return Ok(content);
+    }
+
+    [HttpDelete("remove-document/{id}")]
+    public async Task<IActionResult> deleteDocument([FromRoute] string id)
+    {
+        var people = await CassandraDB.ExecuteAsync(new SimpleStatement($"SELECT people FROM documents_by_id WHERE id = {id}"));
+        string[] peopleNames;
+        peopleNames = ((string[])people.ElementAt(0)["people"])[0].Split("'");
+        string batch = "BEGIN BATCH\n";
+        batch += $"DELETE FROM documents_by_id WHERE id = {id}\n";
+        foreach(var person in peopleNames)
+        {
+            batch += $"DELETE FROM document_card_by_username WHERE document_id = {id} AND username = '{person}'\n";
+        }
+        batch += "APPLY BATCH;";
+        var simpleStatement = new SimpleStatement(batch);
+        await CassandraDB.ExecuteAsync(simpleStatement);
+        return Ok();
     }
 
 
